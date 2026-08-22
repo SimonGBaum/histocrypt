@@ -1,4 +1,5 @@
 import random
+import math
 import string
 
 
@@ -61,7 +62,7 @@ def choose_prefill(plaintext, difficulty):
         if upper[index] in ALPHABET:
             letter_positions.append(index)
     percent = DIFFICULTY[difficulty]
-    target = (len(upper) * percent + 99) // 100
+    target = math.ceil(len(upper) * percent / 100)
     count = min(target, len(letter_positions))
     chosen = random.sample(letter_positions, count)
     prefill = {}

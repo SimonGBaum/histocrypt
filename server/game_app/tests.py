@@ -1,6 +1,4 @@
-from unittest.mock import patch
-from django.contrib.auth.models import User
-from django.test import SimpleTestCase, TestCase
+from django.test import SimpleTestCase
 from .cipher import ALPHABET, build_mapping, encode
 
 

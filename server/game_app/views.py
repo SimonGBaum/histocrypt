@@ -1,8 +1,10 @@
+import os
+import random
+import requests
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 from django.shortcuts import get_object_or_404
-from .services import get_random_quote, QuoteUnavailable
 from .cipher import build_puzzle, tokenize
 from .serializers import SavedGameSerializer
 
@@ -12,15 +14,29 @@ class NewPuzzle(APIView):
     def get(self, request):
         difficulty = request.query_params.get("difficulty", "medium")
         character_type = request.query_params.get("character_type", "alphabetic")
+        api_key = os.environ.get("ZENQUOTES_API_KEY")
+        url = f"https://zenquotes.io/api/quotes/{api_key}"
         try:
-            quote = get_random_quote()
-        except QuoteUnavailable:
+            response = requests.get(url, timeout=10)
+            batch = response.json()
+        except Exception:
             return Response(
-                {"detail": "No puzzle is available right now. Please try again."},
+                {"detail": "No puzzle available at this time. Please try again."},
                 status=status.HTTP_503_SERVICE_UNAVAILABLE
             )
+        candidates = []
+        for item in batch:
+            length = int(item["c"])
+            if length >= 50 and length <= 180:
+                candidates.append(item)
+        if len(candidates) == 0:
+            return Response(
+                {"detail": "No puzzle available at this time. Please try again."},
+                status=status.HTTP_503_SERVICE_UNAVAILABLE
+            )
+        chosen = random.choice(candidates)
         try:
-            puzzle = build_puzzle(quote["quote"], difficulty, character_type)
+            puzzle = build_puzzle(chosen["q"], difficulty, character_type)
         except ValueError:
             return Response(
                 {"detail": "Invalid difficulty or character type."},
@@ -31,13 +47,13 @@ class NewPuzzle(APIView):
             "ciphertext": puzzle["ciphertext"],
             "prefill": puzzle["prefill"],
             "plaintext": puzzle["plaintext"],
-            "author": quote["author"],
+            "author": chosen["a"],
             "difficulty": difficulty,
             "character_type": character_type,
             "length": puzzle["length"],
         }, status=status.HTTP_200_OK)
-
-
+        
+ 
 class SavedGameList(APIView):
 
     def get(self, request):
