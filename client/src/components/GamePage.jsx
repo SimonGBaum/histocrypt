@@ -276,12 +276,12 @@ export default function GamePage() {
       {showOptions && (
         <div className="game-options">
           {puzzle && !isSolved() && (
-            <button className="btn btn-primary" onClick={handleSave}>
+            <button className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} onClick={handleSave}>
               Save
             </button>
           )}
           {saveMessage && <p>{saveMessage}</p>}
-          <Link className="btn btn-primary" to="/game/saved">
+          <Link className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} to="/game/saved">
             Saved Games
           </Link>
         </div>
@@ -308,7 +308,7 @@ export default function GamePage() {
         </select>
       </div>
 
-      <button className="btn btn-primary" onClick={loadPuzzle}>
+      <button className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} onClick={loadPuzzle}>
         New Game
       </button>
 
@@ -317,7 +317,7 @@ export default function GamePage() {
       {error && (
         <>
           <p className="text-danger">{error}</p>
-          <button className="btn btn-primary" onClick={loadPuzzle}>
+          <button className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} onClick={loadPuzzle}>
             Try Again
           </button>
         </>
@@ -370,7 +370,7 @@ export default function GamePage() {
                 </div>
               )}
               <button
-                className="btn btn-primary"
+                className="btn" style={{backgroundColor: "#5A92C2", color: "white"}}
                 onClick={handleFavorite}
                 disabled={favorited}
               >
@@ -382,7 +382,7 @@ export default function GamePage() {
           )}
         </>
       )}
-      <button className="btn btn-primary" onClick={handleHome}>
+      <button className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} onClick={handleHome}>
         Home
       </button>
     </>

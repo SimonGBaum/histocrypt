@@ -96,13 +96,13 @@ export default function SavedGamesPage() {
                   characters · saved {readableDate(game.updated_at)}
                 </p>
                 <button
-                  className="btn btn-primary"
+                  className="btn" style={{backgroundColor: "#5A92C2", color: "white"}}
                   onClick={() => handleResume(game)}
                 >
                   Resume
                 </button>
                 <button
-                  className="btn btn-danger"
+                  className="btn" style={{backgroundColor: "#e04141", color: "white"}}
                   onClick={() => handleDelete(game.id)}
                 >
                   Delete
@@ -114,7 +114,7 @@ export default function SavedGamesPage() {
         </>
       )}
 
-      <Link className="btn btn-primary" to="/home">
+      <Link className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} to="/home">
         Home
       </Link>
     </>

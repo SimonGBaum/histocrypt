@@ -37,7 +37,7 @@ export default function App() {
 
   return (
     <>
-      <h1>HistoCrypt</h1>
+      <h1 style={{color: "#5A92C2"}}>HistoCrypt</h1>
       {loading || (!user && location.pathname !== "/") ? (
         <p>Loading...</p>
       ) : (

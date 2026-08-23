@@ -119,7 +119,7 @@ export default function UserPage() {
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
             />
-            <button className="btn btn-primary" type="submit">
+            <button className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} type="submit">
               Search
             </button>
             <button
@@ -155,7 +155,7 @@ export default function UserPage() {
                     <p className="favorite-note">{favorite.note}</p>
                   )}
                   <button
-                    className="btn btn-primary"
+                    className="btn" style={{backgroundColor: "#5A92C2", color: "white"}}
                     onClick={() => openComment(favorite)}
                   >
                     Comment
@@ -168,7 +168,7 @@ export default function UserPage() {
                         onChange={(event) => setNoteText(event.target.value)}
                       />
                       <button
-                        className="btn btn-primary"
+                        className="btn" style={{backgroundColor: "#5A92C2", color: "white"}}
                         onClick={() => handleSaveNote(favorite.id)}
                       >
                         Save
@@ -179,7 +179,7 @@ export default function UserPage() {
                     </div>
                   )}
                   <button
-                    className="btn btn-danger"
+                    className="btn" style={{backgroundColor: "#e04141", color: "white"}}
                     onClick={() => handleDelete(favorite.id)}
                   >
                     Delete
@@ -230,7 +230,7 @@ export default function UserPage() {
         </div>
       )}
 
-      <Link className="btn btn-primary" to="/home">
+      <Link className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} to="/home">
         Home
       </Link>
     </>

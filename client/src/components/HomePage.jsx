@@ -18,10 +18,10 @@ export default function HomePage() {
     <>
       <p>{user.username}</p>
       <div className="home-nav">
-      <Link className="btn btn-primary" to="/game">
+      <Link className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} to="/game">
         Game
       </Link>
-      <Link className="btn btn-primary" to="/user">
+      <Link className="btn" style={{backgroundColor: "#5A92C2", color: "white"}} to="/user">
         User Area
       </Link>
       <button className="btn btn-secondary" onClick={handleLogOut}>
