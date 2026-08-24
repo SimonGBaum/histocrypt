@@ -16,6 +16,7 @@ env/
 db.sqlite3
 /server/staticfiles/
 /server/media/
+/server/gunicorn.ctl
 
 # Node / React
 node_modules/

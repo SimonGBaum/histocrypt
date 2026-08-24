@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from the project-root .env file.
 # BASE_DIR is server/, so the root is one level up.
-load_dotenv(Path(__file__).resolve().parent.parent.parent / ".env")
+load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
