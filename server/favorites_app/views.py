@@ -9,7 +9,7 @@ class FavoriteList(APIView):
 
     def get(self, request):
         favorites = request.user.favorites.all()
-        search = request.query_params.get("search")
+        search = request.query_params.get("search", "")
         term = search.lower()
         matches = []
         for favorite in favorites:
