@@ -1,6 +1,6 @@
 # HistoCrypt — Full-Stack Personal Project
 
-In this project I built a cryptogram puzzle application with Django, Django REST Framework, PostgreSQL, and React. The API has full CRUD and JWT cookie authentication capabilities, and the whole stack is containerized with Docker Compose and deployed to AWS EC2 behind Nginx.
+In this project I built a cryptogram puzzle application with Django, Django REST Framework, PostgreSQL, and React. The API has full CRUD and JWT cookie authentication capabilities, and the whole stack is containerized with Docker Compose and deployed to AWS EC2 behind Nginx. **Live at [histocrypt-the-game.duckdns.org](http://histocrypt-the-game.duckdns.org)**
 
 ## Scenario
 
