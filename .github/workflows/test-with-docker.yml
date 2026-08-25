@@ -1,0 +1,29 @@
+name: Testing with Docker Compose
+
+on:
+    pull_request:
+        branches:
+            - main
+    push:
+
+jobs:
+    Run_the_Test_Suite:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout the repository
+              uses: actions/checkout@v4
+
+            - name: Create the env file
+              run: cp server/.env.example server/.env
+
+            - name: Start the database
+              run: docker compose up -d db
+
+            - name: Wait for the database
+              run: |
+                  until docker compose exec -T db pg_isready -U histocrypt_user; do
+                    sleep 1
+                  done
+
+            - name: Run the Test Suite
+              run: docker compose run --rm backend python manage.py test
