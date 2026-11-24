@@ -41,7 +41,7 @@ export default function GamePage() {
       setSavedGameId(null);
       setSavedGameCleared(false);
     } catch (err) {
-      setError("No puzzle is available right now. Please try again.");
+      setError("No puzzles are available right now. Please try again.");
     } finally {
       setLoading(false);
     }
